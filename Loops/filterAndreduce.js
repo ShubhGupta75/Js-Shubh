@@ -15,7 +15,7 @@ console.log(newNums1);
 // To do the same thing in forEach loop
 
 const number = [3,4,6,8,10,12,14]
-const newNumber = []   // defining a new arrays to store values
+const newNumber = []   // defining a new array to store values
 number.forEach( (item) => {
   if(item % 2 == 0){
     newNumber.push(item)
