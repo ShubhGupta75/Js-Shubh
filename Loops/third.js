@@ -94,3 +94,39 @@ for (const tea of teaCollection) {
   newTeaCollection.push(tea)
 }
 console.log(newTeaCollection);
+
+
+// for-of loop only works in arrays not in objects and provides directly values.
+// for-in loop works for both objects anf arrays and provides keys.
+// forEach loop is majorly used in arrays and can provide key, values and whole arr together.
+
+const coding = ["js", "java", "cpp", "python", "ruby"]
+
+coding.forEach( (item, index,arr) => {
+  console.log(item, index,arr);
+
+} )
+
+// Accessing objects inside arrays
+
+const myCoding = [
+  {
+    languageName: "javascript",
+    languageNameShort: "js"
+  },
+  {
+    languageName: "java",
+    languageNameShort: "java"
+  },
+  {
+    languageName: "python",
+    languageNameShort: "py"
+  }
+]
+
+myCoding.forEach( (item) => {
+  console.log(item.languageName);
+
+} )
+
+// forEach loop doesn't return any values and therefore we can't perform particular value task in  it.
