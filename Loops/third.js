@@ -129,4 +129,4 @@ myCoding.forEach( (item) => {
 
 } )
 
-// forEach loop doesn't return any values and therefore we can't perform particular value task in  it.
+// forEach loop doesn't return any values and we can't store any values in it, therefore we can't perform particular value task in it.
