@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM 3</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+  <ul class="languageName">
+    <li>JavaScript</li>
+  </ul>
+</body>
+<script>
+
+  // Creating a function to add element in webpage so that we can call it  multiple times.
+
+  function addLanguage(langName){
+    const li = document.createElement("li")
+    li.innerHTML = `${langName}`
+    document.querySelector(".languageName").appendChild(li)
+  }
+  addLanguage("python")
+
+  // Optimized way to add element in webpage
+
+  function addOptiLanguage(langName){
+    const li = document.createElement("li")
+    const addText = document.createTextNode(langName)
+    li.appendChild(addText)
+
+    // in one line  => li.appendChild(document.createTextNode(langName))
+    document.querySelector(".languageName").appendChild(li)
+  }
+  addOptiLanguage("NodeJs")
+
+  // EDIT
+  const secondLang = document.querySelector("li:nth-child(2)")
+  // console.log(secondLang);  // selects python
+  const newli = document.createElement("li")
+  newli.textContent = "MongoDB"  // another way to add text
+  secondLang.replaceWith(newli)
+
+  // REMOVE
+  const lastLang = document.querySelector("li:last-child")
+  lastLang.remove()
+
+</script>
+</html>
