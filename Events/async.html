@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async</title>
+</head>
+<body>
+  <h1>Chai aur Code</h1>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+</body>
+<script>
+  const sayShubh = function(){
+    console.log("Shubh");
+  }
+
+const changeText = function(){
+  document.querySelector("h1").innerHTML = "Best Coding Website"
+}
+
+const changeTime = setTimeout(changeText, 2000);
+// changeText will execute after 2 sec.
+document.querySelector("#stop").addEventListener("click", function(){
+  clearTimeout(changeTime)
+  console.log("STOPPED");
+  // if I press stop button before 2 sec, the change in text won't happen.
+})
+
+
+</script>
+</html>
