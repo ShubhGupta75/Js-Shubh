@@ -5,16 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const cityNameDisplay = document.getElementById("city-name");
   const temperatureDisplay = document.getElementById("temperature");
   const descriptionDisplay = document.getElementById("description");
-  const errorMessage = document.getElementById("error-messag");
+  const errorMessage = document.getElementById("error-message");
 
-  const API_KEY = "5f56d525d1619d0a2cd2eac4ce55588e"; //env variables
+  const API_KEY = "2f501d13290cda0aaecfc909bb8bd0b5";
 
   getWeatherBtn.addEventListener("click", async () => {
     const city = cityInput.value.trim();
     if (!city) return;
 
-    // it may throw an error
-    // server/database is always in another continent
+    // Web requests always takes some time and it may show error, always remember this.
 
     try {
       const weatherData = await fetchWeatherData(city);
@@ -25,34 +24,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   async function fetchWeatherData(city) {
-    //gets the data
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
 
-    const response = await fetch(url);
-    console.log(typeof response);
-    console.log("RESPONSE", response);
+    const response = await fetch(url)
+    // console.log(typeof response);  => Object
+    console.log(response);
 
-    if (!response.ok) {
-      throw new Error(" City Not found");
+    if(!response.ok){
+      throw new Error("City not found")
     }
-    const data = await response.json();
+
+    const data = await response.json()
     return data;
+
   }
 
   function displayWeatherData(data) {
     console.log(data);
-    const { name, main, weather } = data;
-    cityNameDisplay.textContent = name;
-    temperatureDisplay.textContent = `Temperature : ${main.temp}`;
-    descriptionDisplay.textContent = `Weather : ${weather[0].description}`;
+    const {name, main, weather} = data;
+    cityNameDisplay.innerHTML = name;
+    temperatureDisplay.innerHTML = `Temperature : ${main.temp}`;
+    descriptionDisplay.innerHTML = `Description : ${weather[0].description}`;
 
-    //unlock the display
-    weatherInfo.classList.remove("hidden");
-    errorMessage.classList.add("hidden");
+    // Unlocking the display(because the class is hidden)
+    weatherInfo.classList.remove("hidden")  // show weather.
+    errorMessage.classList.add("hidden")  // hide error.
+
+
   }
 
   function showError() {
-    weatherInfo.classList.remove("hidden");
-    errorMessage.classList.add("hidden");
+    weatherInfo.classList.add("hidden");  // hide weather.
+    errorMessage.classList.remove("hidden"); // show error.
   }
 });
